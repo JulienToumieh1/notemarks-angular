@@ -1,0 +1,11 @@
+
+<div class="centercontainer">
+    <div class="profileinfo">
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Date Joined:</strong> {{ user.date_joined }}</p>
+    </div>
+    <button (click)="logout()" class="logout-button">Logout</button>
+</div>
+
+

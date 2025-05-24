@@ -1,0 +1,130 @@
+
+.notemarkscontainer {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 120px;
+}
+
+.centercontainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.notemark {
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    height: fit-content;
+    margin-bottom: 32px;
+}
+
+.notemarktitle {
+    color: var(--text);
+    font-size: xx-large;
+    margin-bottom: 14px;
+}
+
+.notemarktext {
+    color: #6b6b6b;
+    font-size: x-large;
+    width: auto;
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    color: var(--text);
+    text-align: center;
+    font-size: xx-large;
+}
+
+.chip {
+    border-radius: 10px;
+    border-width: 2px; 
+    color: aliceblue;
+    border: #0000;
+    font-size: large;
+    height: 24px;
+    min-width: 30px;
+    padding: 8px;
+    border-style: solid;
+    display: flex;
+    margin: 4px;
+    text-align: center;
+    justify-content: center;
+    transition: background-color 0.3s ease; 
+}
+
+.addchip {
+   border-radius: 10px;
+   color: aliceblue;
+   font-size: large;
+   height: 24px;
+   min-width: 30px;
+   padding: 8px;
+   border-style: none;
+   display: flex;
+   margin: 4px;
+   text-align: center;
+   justify-content: center;
+}
+
+.chipbtn {
+    background-color: #0000;
+    border-style: none;
+}
+
+.chipcontainer {
+    margin-top: 120px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.filtercontainer {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 45px;
+    margin-top: 10px;
+    display: flex;
+    height: 45px;
+}
+
+.searchinput {
+    width: 400px;
+    border-radius: 1000px;
+    background-color: #0000;
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--secondary);
+    color: #9fb7d6;
+    font-size: larger;
+    margin-left: 300px;
+    padding-left: 20px;
+    height: 48px;
+}
+
+form {
+    padding: 0px;
+    margin: 0px;
+    width: fit-content;
+}

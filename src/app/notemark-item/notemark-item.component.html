@@ -1,0 +1,14 @@
+
+<div class="notemark" style="background-color: {{ notemark.color }}13; display: flex; align-items: stretch;">
+    <div style="background-color: {{ notemark.color }}; width: 12px; margin-right:22px; border-radius: 100px;"></div>
+    <div style="display: flex; flex-direction: column; width: 100%;">
+        <span class="notemarktitle">{{ notemark.title }}</span>
+        <span class="notemarktext">{{ notemark.contents }}</span>
+        <div style="width: 100%;">
+
+            <button type="submit" (click)="deleteNotemark(notemark.id)" class="btn btn-danger" style="background: transparent; border: none; float: right;">
+                <img class="icon" src="../../assets/images/trashicon.svg" alt="Delete">
+            </button>
+
+        </div>
+    </div>

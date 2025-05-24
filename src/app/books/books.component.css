@@ -1,0 +1,125 @@
+.bookcontainer {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    gap: 10px;  
+    justify-content: center; 
+    flex-wrap: wrap;
+    margin-bottom: 150px;
+}
+
+.centercontainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0000;
+}
+
+.bookitem {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    margin: 15px;
+}
+
+.booktitle {
+    color: var(--text);
+    font-size: x-large;
+    margin-bottom: 4px;
+}
+
+.bookauthor {
+    color: #6b6b6b;
+    font-size: larger;
+}
+
+.bookcover {
+    width: 160px;
+    height: 220px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 14px;
+    object-fit: cover;
+}
+
+.filtercontainer {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 45px;
+    margin-top: 45px;
+    display: flex;
+}
+
+.searchinput {
+    width: 400px;
+    border-radius: 1000px;
+    background-color: #0000;
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--secondary);
+    color: #9fb7d6;
+    font-size: larger;
+    margin-left: 300px;
+    padding-left: 20px;
+    height: 48px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+h2 {
+    color: var(--text);
+    text-align: center;
+    font-size: xx-large;
+}
+
+.chip {
+    border-radius: 10px;
+    border-width: 2px; 
+    color: aliceblue;
+    border: #0000;
+    font-size: large;
+    height: 24px;
+    min-width: 30px;
+    padding: 8px;
+    border-style: solid;
+    display: flex;
+    margin: 4px;
+    text-align: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.addchip {
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: large;
+    height: 24px;
+    min-width: 30px;
+    padding: 8px;
+    border-style: none;
+    display: flex;
+    margin: 4px;
+    text-align: center;
+    justify-content: center;
+}
+
+.chipbtn {
+    background-color: #0000;
+    border-style: none;
+}
+
+.chipcontainer {
+    margin-top: 120px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    padding: 0px;
+    margin: 0px;
+    width: fit-content;
+}

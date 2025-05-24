@@ -1,0 +1,16 @@
+.profileinfo {
+    margin-top: 200px;
+    padding: 40px;
+    background-color:#4da6da1c;
+    border-radius: 20px;
+}
+
+.logout-button {
+    text-decoration: none;
+    background-color: #0000;
+    border-style: none;
+    font-size: large;
+    font-weight: 600;
+    color: rgb(255, 81, 81);
+    margin-top: 20px;
+}

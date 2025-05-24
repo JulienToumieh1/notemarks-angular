@@ -1,0 +1,46 @@
+
+.notemarkscontainer {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 120px;
+}
+
+.centercontainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.notemark {
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    height: fit-content;
+    margin-bottom: 32px;
+}
+
+.notemarktitle {
+    color: var(--text);
+    font-size: xx-large;
+    margin-bottom: 14px;
+}
+
+.notemarktext {
+    color: #6b6b6b;
+    font-size: x-large;
+    width: auto;
+}
+
+
+
+h2 {
+    color: var(--text);
+    text-align: center;
+    font-size: xx-large;
+}
+

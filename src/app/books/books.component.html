@@ -1,0 +1,160 @@
+
+    <div class="centercontainer">
+
+        <div class="chipcontainer">
+
+            <div *ngFor="let category of categories">
+                <a (click)="onCategoryChange(category.id); $event.preventDefault()" 
+                [routerLink]="['/books']"
+                [queryParams]="{
+                    category: category.id,
+                    search: search ? search : undefined,
+                    sort: sort_direction ? sort_direction : undefined
+                }"
+                queryParamsHandling="merge">
+                
+                <div class="chip"
+                    [attr.data-category-id]="category.id"
+                    [ngStyle]="{
+                        'border-bottom-color': category.color,
+                        'background-color': category.id !== categoryFilter ? category.color + '20' : category.color
+                    }">
+                    {{ category.name }}
+                </div>
+                </a>
+            </div>
+
+
+            <button id="openCategoryModalButton" (click)="createCategoryPopup(true)" style="background-color: #0000; border-style: none;">
+                <div class="addchip" style="border-color: #45f8d1; background-color: #45f8d113;">
+                    <img class="icon" src="../../assets/images/addicon.svg  ">
+                </div>
+            </button>
+        
+
+        </div>
+
+
+        <div class="filtercontainer">
+            <button id="sortButton" (click)="toggleSort(); $event.preventDefault()" style="background-color: #0000; border-style: none;">
+                <img class="icon" src="../../assets/images/sorticon1.svg">
+            </button>
+        
+
+            <input #searchInput  type="text" (keyup)="onSearchChange(searchInput.value)"  name="search" class="searchinput" placeholder="Search by title or author">
+            <!--<button type="submit" (click)="onSearchChange('e'); $event.preventDefault()" style="background-color: #0000; border-style: none; margin-left: 16px;">
+                <img class="icon" src="../../assets/images/searchicon.svg">
+            </button>-->
+
+            <button id="addBookButton" (click)="createBookPopup(true)" style="background-color: #0000; border-style: none; margin-left: 270px;">
+                <img class="icon" src="../../assets/images/addicon.svg">
+            </button>
+        </div>
+        
+
+        <div class="bookcontainer">
+                <app-book-item *ngFor="let book of books" [book]="book"></app-book-item>
+        </div>
+    </div>
+
+
+
+    <div id="addCategoryModal" class="modal" *ngIf="showCategoryModal">
+        <div class="modal-content">
+          <span class="close" id="closeCategoryModal" (click)="createCategoryPopup(false)">&times;</span>
+          <h2>Create New Category</h2>
+          <form method="POST" #categoryForm="ngForm" (ngSubmit)="createCategory(categoryForm)" class="modal-form">
+            <div class="form-field">
+              <label for="category_name">Category Name:</label>
+              <input type="text" name="category_name" ngModel required />
+            </div>
+      
+            <div>
+              <label for="category_color">Category Color:</label>
+              <input type="color" name="category_color" ngModel required />
+            </div>
+      
+            <div class="form-field">
+              <button type="submit">Create Category</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+
+
+      <div id="addBookModal" class="modal" *ngIf="showBookModal">
+        <div class="modal-content">
+          <span class="close" id="closeBookModal" (click)="createBookPopup(false)">&times;</span>
+          <h2>Add New Book</h2>
+          <form method="POST" #bookForm="ngForm" (ngSubmit)="createBook(bookForm)" class="modal-form">
+      
+            <div class="form-field">
+              <label for="title">Title:</label>
+              <input type="text" name="title" id="title" ngModel required>
+            </div>
+      
+            <div class="form-field">
+              <label for="authors">Authors:</label>
+              <input type="text" name="authors" id="authors" ngModel required>
+            </div>
+      
+            <div class="form-field">
+              <label for="author_email">Author's Email:</label>
+              <input type="email" name="author_email" id="author_email" ngModel required>
+            </div>
+      
+            <div class="form-field">
+              <label for="description">Description:</label>
+              <textarea name="description" id="description" ngModel required></textarea>
+            </div>
+      
+            <div class="form-field">
+              <label for="cover_image">Cover Image:</label>
+              <input type="file" name="cover_image" id="cover_image" ngModel (change)="onFileChange($event, 'cover_image')" accept="image/*">        
+            </div>
+      
+            <div class="form-field">
+              <label for="book_pdf">Book PDF:</label>
+              <input type="file" name="book_pdf" id="book_pdf" ngModel (change)="onFileChange($event, 'book_pdf')" accept=".pdf">
+            </div>
+      
+            <div class="form-field">
+              <label for="pages">Pages:</label>
+              <input type="number" name="pages" id="pages" ngModel required>
+            </div>
+      
+            <div class="form-field">
+              <label for="status">Status:</label>
+              <select name="status" id="status" ngModel required>
+                <option value="unread">Unread</option>
+                <option value="reading">Reading</option>
+                <option value="finished">Finished</option>
+                <option value="wont_finish">Won't Finish</option>
+              </select>
+            </div>
+      
+            <div class="form-field">
+              <label for="rating">Rating:</label>
+              <input type="number" name="rating" id="rating"  ngModel min="0" max="5">
+            </div>
+      
+            <div class="form-field">
+              <label for="favourite">Favourite:</label>
+              <input type="checkbox" name="favourite" id="favourite" ngModel >
+            </div>
+      
+            <div class="form-field">
+              <label for="categories">Categories:</label>
+              <select name="categories" id="categories" multiple ngModel required>
+                <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+              </select>
+            </div>
+      
+            <div class="form-field">
+              <button type="submit">Add Book</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      

@@ -1,0 +1,75 @@
+
+
+<div class="centercontainer">
+
+    <div class="chipcontainer">
+
+        <div *ngFor="let tag of tags">
+            <a (click)="onTagChange(tag.id); $event.preventDefault()" 
+            [routerLink]="['/notemarks']"
+            [queryParams]="{
+                tag: tag.id,
+                search: search ? search : undefined,
+                sort: sort_direction ? sort_direction : undefined
+            }"
+            queryParamsHandling="merge">
+            
+            <div class="chip"
+                [attr.data-tag-id]="tag.id"
+                [ngStyle]="{
+                    'border-bottom-color': tag.color,
+                    'background-color': tag.id !== tagFilter ? tag.color + '20' : tag.color
+                }">
+                {{ tag.name }}
+            </div>
+            </a>
+        </div>
+
+
+    <button id="openTagModalButton" (click)="createTagPopup(true)" style="background-color: #0000; border-style: none;">
+        <div class="addchip" style="border-color: #45f8d1; background-color: #45f8d113;">
+            <img class="icon" src="../../assets/images/addicon.svg  ">
+        </div>
+    </button>
+
+    </div>
+
+
+    <div class="filtercontainer">
+        <button id="sortButton" (click)="toggleSort(); $event.preventDefault()" style="background-color: #0000; border-style: none;">
+            <img class="icon" src="../../assets/images/sorticon1.svg">
+        </button>
+    
+
+        <input #searchInput  type="text" (keyup)="onSearchChange(searchInput.value)"  name="search" class="searchinput" placeholder="Search by title or author">
+
+    </div>
+
+
+
+    <div class="notemarkscontainer">
+        <app-notemark-item *ngFor="let notemark of notemarks" [notemark]="notemark"></app-notemark-item>
+    </div>
+
+    <div id="addTagModal" class="modal" *ngIf="showTagModal">
+        <div class="modal-content">
+            <span class="close" id="closeTagModal" (click)="createTagPopup(false)">&times;</span>
+            <h2>Create New Tag</h2>
+            <form method="POST" #tagForm="ngForm" (ngSubmit)="createTag(tagForm)" class="modal-form">
+            <div class="form-field">
+                <label for="tag_name">Tag Name:</label>
+                <input type="text" name="tag_name" ngModel required />
+            </div>
+        
+            <div>
+                <label for="tag_color">Tag Color:</label>
+                <input type="color" name="tag_color" ngModel required />
+            </div>
+        
+            <div class="form-field">
+                <button type="submit">Create Tag</button>
+            </div>
+            </form>
+        </div>
+        </div>
+

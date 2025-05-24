@@ -1,0 +1,140 @@
+
+    <div class="centercontainer">
+
+        <div class="bookdescriptioncontainer">
+
+            <img class="bookcover" src="http://localhost:8000/media/{{ book.cover_image }}">
+            <div class="bookinfo">
+                <span class="booktitle">{{ book.title }}</span>
+                <span class="bookauthor">{{ book.authors }}</span>
+                <span class="bookdescription">{{ book.description }}</span>
+                <div style="width: 100%; margin-top: 20px;">
+
+                <button type="submit" (click)="deleteBook(book.id)" style="background-color: #0000; border-style: none; float: right;" class="btn btn-danger">
+                    <img class="icon" src="../../assets/images/trashicon.svg" alt="Delete">
+                </button>
+
+                <button type="submit" (click)="editBookPopup(book.id)" style="background-color: #0000; border-style: none; float: right;" class="btn btn-danger">
+                    <img class="icon" src="../../assets/images/editicon.svg" alt="Edit">                        
+                </button>
+
+                </div>
+            </div>
+
+            <a href="http://localhost:8000/media/{{ book.book_pdf }}" target="_blank">
+                <img class="icon" src="../../assets/images/bookicon.svg" alt="Edit">
+            </a>
+            
+                
+        </div>
+
+        <span style="font-size: xx-large; margin-top: 50px; margin-bottom: 10px; width: 100%; max-width: 1180px;">Notemarks</span>
+        
+        
+        <div class="filtercontainer">
+            <button id="sortButton" (click)="toggleSort(); $event.preventDefault()" style="background-color: #0000; border-style: none;">
+                <img class="icon" src="../../assets/images/sorticon1.svg">
+            </button>
+
+            <input #searchInput  type="text" (keyup)="onSearchChange(searchInput.value)"  name="search" class="searchinput" placeholder="Search by title or author">
+            
+            <button id="addNotemarkButton" (click)="createNotemarkPopup(true)" style="background-color: #0000; border-style: none; margin-left: 270px;">
+                <img class="icon" src="../../assets/images/addicon.svg">
+            </button>
+
+        </div>
+        
+
+        <div class="notemarkscontainer">
+            <app-notemark-item *ngFor="let notemark of notemarks" [notemark]="notemark"></app-notemark-item>
+        </div>
+
+    </div>
+
+
+    <div id="editBookModal" class="modal" *ngIf="showEditBookModal">
+        <div class="modal-content">
+          <span class="close" id="closeEditModal" (click)="editBookPopup(false)">&times;</span>
+          <h2>Edit Book</h2>
+          <form method="POST" #editBookForm="ngForm" (ngSubmit)="editBook(editBookForm)" class="modal-form">
+
+            
+            <div class="form-field">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="edit-title" value="{{ book.title }}" ngModel required>
+            </div>
+            
+            <div class="form-field">
+                <label for="authors">Authors:</label>
+                <input type="text" name="authors" id="edit-authors" value="{{ book.authors }}" ngModel required>
+            </div>
+
+            <div class="form-field">
+                <label for="description">Description:</label>
+                <textarea name="description" id="edit-description" ngModel required>{{ book.description }}</textarea>
+            </div>
+            
+
+            <div class="form-field">
+                <button type="submit">Update Book</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+    <div id="addNotemarkModal" class="modal" *ngIf="showNotemarkModal">
+        <div class="modal-content">
+          <span class="close" id="closeNotemarkModal" (click)="createNotemarkPopup(false)">&times;</span>
+          <h2>Add New Notemark</h2>
+          <form method="POST" #notemarkForm="ngForm" (ngSubmit)="createNotemark(notemarkForm)" class="modal-form">
+
+                <div class="form-field">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" ngModel required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="chapter">Chapter:</label>
+                    <input type="text" name="chapter" ngModel required>
+                </div>
+
+                <div class="form-field">
+                    <label for="contents">Contents:</label>
+                    <input type="text" name="contents" ngModel required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="page">Page Number:</label>
+                    <input type="number" name="page" ngModel required>
+                </div>
+                
+                <div>
+                    <label for="color">Color:</label>
+                    <input type="color" name="color" ngModel required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="favourite">Favourite:</label>
+                    <input type="checkbox" name="favourite" ngModel required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="tags">Tags:</label>
+                    <select name="tags" multiple ngModel required>
+                    
+                        <option *ngFor="let tag of tags" value="{{ tag.id }}">{{ tag.name }}</option>
+                    </select>
+                </div>
+                
+                <div class="form-field">
+                    <button type="submit">Add Notemark</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
