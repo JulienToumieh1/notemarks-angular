@@ -5,6 +5,7 @@ import { BookItemComponent } from '../book-item/book-item.component';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-books',
@@ -45,7 +46,7 @@ export class BooksComponent implements OnInit {
         .set('sort', this.sort_direction);
 
 
-    this.http.post<any>("http://localhost:8000/api/books/", params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/books/", params).subscribe(data => {
       this.books = data.books;
       this.categories = data.categories;
 
@@ -68,7 +69,7 @@ export class BooksComponent implements OnInit {
         .set('category_color', form.value.category_color);
 
     
-    this.http.post<any>('http://localhost:8000/api/create/category/', params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/create/category/", params).subscribe(data => {
       this.showCategoryModal = false;
       this.loadBooks( )
     }, error => {
@@ -129,7 +130,7 @@ export class BooksComponent implements OnInit {
       formData.append('categories', category);
     });
  
-    this.http.post<any>('http://localhost:8000/api/create/book/', formData).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/create/book/", formData).subscribe(data => {
       this.showBookModal = false;
       this.loadBooks();
     }, error => {

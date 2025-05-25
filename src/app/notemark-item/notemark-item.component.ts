@@ -1,6 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-notemark-item',
@@ -21,7 +22,7 @@ export class NotemarkItemComponent {
     params.append('notemark_id', String(id));
 
 
-    this.http.post<any>('http://localhost:8000/api/delete/notemark/', params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/delete/notemark/", params).subscribe(data => {
       console.log(data);
     
       window.location.reload(); 

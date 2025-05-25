@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NotemarkItemComponent } from '../notemark-item/notemark-item.component';
 import { FormsModule, NgForm } from '@angular/forms';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-notemarks',
@@ -41,7 +42,7 @@ export class NotemarksComponent implements OnInit {
         .set('notemarks_sort', this.sort_direction);
 
 
-    this.http.post<any>("http://localhost:8000/api/notemarks/", params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/notemarks/", params).subscribe(data => {
       this.notemarks = data.notemarks;
       this.tags = data.tags;
     }, error => {
@@ -62,7 +63,7 @@ export class NotemarksComponent implements OnInit {
         .set('tag_name', form.value.tag_name)
         .set('tag_color', form.value.tag_color);
 
-    this.http.post<any>('http://localhost:8000/api/create/tag/', params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/create/tag/", params).subscribe(data => {
       this.showTagModal = false;
       this.loadNotemarks( )
     }, error => {

@@ -3,6 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent {
         .set('password', password);
 
 
-      this.http.post('http://localhost:8000/api/login/', params, { 
+      this.http.post(environment.apiUrl + "api/login/", params, { 
         withCredentials: true,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).subscribe(

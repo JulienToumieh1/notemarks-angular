@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { NotemarkItemComponent } from '../notemark-item/notemark-item.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-book',
@@ -57,7 +58,7 @@ export class BookComponent {
         .set('sort', this.sort_direction);
 
 
-    this.http.post<any>("http://localhost:8000/api/book/", params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/book/", params).subscribe(data => {
       this.book = data.book;
       this.notemarks = data.notemarks;
       this.tags = data.tags
@@ -89,7 +90,7 @@ export class BookComponent {
 
 
 
-    this.http.post<any>('http://localhost:8000/api/create/notemark/', params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/create/notemark/", params).subscribe(data => {
       this.showNotemarkModal = false;
       this.loadBook()
     }, error => {
@@ -113,7 +114,7 @@ export class BookComponent {
 
 
 
-    this.http.post<any>('http://localhost:8000/api/edit/book/', params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/edit/book/", params).subscribe(data => {
       this.showEditBookModal = false;
       this.loadBook()
     }, error => {
@@ -161,7 +162,7 @@ export class BookComponent {
     const params = new FormData();
     params.append('book_id', String(id));
 
-    this.http.post<any>('http://localhost:8000/api/delete/book/', params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "api/delete/book/", params).subscribe(data => {
       console.log(data)
       this.router.navigate(['/books']);
     }, error => {

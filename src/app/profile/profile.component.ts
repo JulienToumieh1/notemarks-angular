@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -27,7 +28,7 @@ export class ProfileComponent {
     const params = new HttpParams()
         .set('token', String(this.token));
 
-    this.http.post<any>("http://localhost:8000/api/profile/", params).subscribe(data => {
+    this.http.post<any>(environment.apiUrl + "/api/profile/", params).subscribe(data => {
       if (data.username) {
         this.user = {
           username: data.username,
