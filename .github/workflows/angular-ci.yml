@@ -48,6 +48,10 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: dist/notemarks-angular/browser
 
+      - name: Copy Netlify redirects to dist
+        run: cp _redirects dist/notemarks-angular/browser/
+
+
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
 
