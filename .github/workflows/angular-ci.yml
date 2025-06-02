@@ -47,3 +47,10 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: dist/notemarks-angular/browser
 
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to Netlify
+        run: netlify deploy --dir=dist/notemarks-angular/browser --prod --site=${{ secrets.NETLIFY_SITE_ID }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
