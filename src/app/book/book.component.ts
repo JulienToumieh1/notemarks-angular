@@ -24,6 +24,8 @@ export class BookComponent {
   sort_direction: string = 'asc';
   token: string | null = localStorage.getItem('token'); 
 
+  apiUrl: string = environment.apiUrl
+
   showNotemarkModal: boolean = false;
   showEditBookModal: boolean = false;
 
