@@ -49,7 +49,7 @@ jobs:
           SOURCE_DIR: dist/notemarks-angular/browser
 
       - name: Copy Netlify redirects to dist
-        run: cp _redirects dist/notemarks-angular/browser/
+        run: cp src/assets/_redirects dist/notemarks-angular/browser/
 
 
       - name: Install Netlify CLI
