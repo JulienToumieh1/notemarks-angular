@@ -31,12 +31,6 @@ jobs:
         run: npm ci
 
 
-      - name: Add Netlify SPA redirects file
-        run: |
-          mkdir -p src/assets
-          echo "/*    /index.html   200" > src/assets/_redirects
-
-
       #- name: Test
       #  run: npm run test
 
