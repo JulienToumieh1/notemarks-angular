@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-book-item',
@@ -8,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class BookItemComponent {
   @Input() book: any; 
+  apiUrl: string = environment.apiUrl
 }

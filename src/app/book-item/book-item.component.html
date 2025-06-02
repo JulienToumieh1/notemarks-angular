@@ -1,7 +1,7 @@
 
   <a href="/book?bookID={{ book.id }}">
     <div class="bookitem">
-        <img class="bookcover" src="http://localhost:8000/media/{{ book.cover_image }}" alt="Cover of {{ book.title }}">
+        <img class="bookcover" src="{{ apiUrl }}media/{{ book.cover_image }}" alt="Cover of {{ book.title }}">
         <span class="booktitle">{{ book.title }}</span>
         <span class="bookauthor">{{ book.authors }}</span>
     </div>
